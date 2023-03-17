@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4bb8644bfd714106979e38e7746e9b6a" Name="Diagram1">
+        <EntityTypeShape EntityType="mydatabaseModel.tb_basket" Width="1.5" PointX="3.75" PointY="23" />
+        <EntityTypeShape EntityType="mydatabaseModel.tb_basket_item" Width="1.5" PointX="6" PointY="17.5" />
+        <EntityTypeShape EntityType="mydatabaseModel.tb_category" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="mydatabaseModel.tb_category_ml" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="mydatabaseModel.tb_department" Width="1.5" PointX="3.75" PointY="1.75" />
+        <EntityTypeShape EntityType="mydatabaseModel.tb_department_ml" Width="1.5" PointX="6" PointY="5.25" />
+        <EntityTypeShape EntityType="mydatabaseModel.tb_dept_cat_images" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="mydatabaseModel.tb_history_item" Width="1.5" PointX="3" PointY="12.75" />
+        <EntityTypeShape EntityType="mydatabaseModel.tb_product" Width="1.5" PointX="3.75" PointY="17.375" />
+        <EntityTypeShape EntityType="mydatabaseModel.tb_product_images" Width="1.5" PointX="6" PointY="22.25" />
+        <EntityTypeShape EntityType="mydatabaseModel.tb_product_sale" Width="1.5" PointX="6" PointY="8.75" />
+        <EntityTypeShape EntityType="mydatabaseModel.tb_rating" Width="1.5" PointX="3" PointY="9.25" />
+        <EntityTypeShape EntityType="mydatabaseModel.tb_users" Width="1.5" PointX="0.75" PointY="8.25" />
+        <AssociationConnector Association="mydatabaseModel.FKbasket" />
+        <AssociationConnector Association="mydatabaseModel.FKproduct" />
+        <AssociationConnector Association="mydatabaseModel.FKcategory_ml_cat_key" />
+        <AssociationConnector Association="mydatabaseModel.FKdepartment" />
+        <AssociationConnector Association="mydatabaseModel.FKimageCategory" />
+        <AssociationConnector Association="mydatabaseModel.FKcategory_ml_user_key" />
+        <AssociationConnector Association="mydatabaseModel.FKdepartment_ml_dep_key" />
+        <AssociationConnector Association="mydatabaseModel.FKimageDepartment" />
+        <AssociationConnector Association="mydatabaseModel.FKdepartment_ml_user_key" />
+        <AssociationConnector Association="mydatabaseModel.FKhistory_product" />
+        <AssociationConnector Association="mydatabaseModel.FKhistory_user" />
+        <AssociationConnector Association="mydatabaseModel.FKimage" />
+        <AssociationConnector Association="mydatabaseModel.FKproduct_sale_product" />
+        <AssociationConnector Association="mydatabaseModel.FKrating_product" />
+        <AssociationConnector Association="mydatabaseModel.Fproduct_sale_user" />
+        <AssociationConnector Association="mydatabaseModel.FKrating_user" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

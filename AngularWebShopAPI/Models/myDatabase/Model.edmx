@@ -1,0 +1,1159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="mydatabaseModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_basket">
+          <Key>
+            <PropertyRef Name="basket_pk" />
+          </Key>
+          <Property Name="basket_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="basket_user_fk" Type="int" Nullable="false" />
+          <Property Name="start_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="end_date" Type="datetime" Precision="0" />
+          <Property Name="createdondate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="createdby" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="lastupdateddate" Type="datetime" Precision="0" />
+          <Property Name="lastupdatedby" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="tb_basket_item">
+          <Key>
+            <PropertyRef Name="basket_item_pk" />
+          </Key>
+          <Property Name="basket_item_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="basket_item_basket_fk" Type="int" Nullable="false" />
+          <Property Name="basket_item_product_fk" Type="int" Nullable="false" />
+          <Property Name="basket_item_product_name" Type="varchar" MaxLength="250" />
+          <Property Name="basket_item_product_price" Type="int" Nullable="false" />
+          <Property Name="basket_item_count" Type="int" Nullable="false" />
+          <Property Name="start_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="end_date" Type="datetime" Precision="0" />
+          <Property Name="createdondate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="createdby" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="lastupdateddate" Type="datetime" Precision="0" />
+          <Property Name="lastupdatedby" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="tb_category">
+          <Key>
+            <PropertyRef Name="category_pk" />
+          </Key>
+          <Property Name="category_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category_name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="category_department_fk" Type="int" Nullable="false" />
+          <Property Name="start_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="end_date" Type="datetime" Precision="0" />
+          <Property Name="createdondate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="createdby" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="lastupdateddate" Type="datetime" Precision="0" />
+          <Property Name="lastupdatedby" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="tb_category_ml">
+          <Key>
+            <PropertyRef Name="category_ml_pk" />
+          </Key>
+          <Property Name="category_ml_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category_ml_category_fk" Type="int" Nullable="false" />
+          <Property Name="category_ml_user_fk" Type="int" Nullable="false" />
+          <Property Name="category_ml_count" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_department">
+          <Key>
+            <PropertyRef Name="department_pk" />
+          </Key>
+          <Property Name="department_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="department_name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="start_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="end_date" Type="datetime" Precision="0" />
+          <Property Name="createdondate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="createdby" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="lastupdateddate" Type="datetime" Precision="0" />
+          <Property Name="lastupdatedby" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="tb_department_ml">
+          <Key>
+            <PropertyRef Name="department_ml_pk" />
+          </Key>
+          <Property Name="department_ml_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="department_ml_department_fk" Type="int" Nullable="false" />
+          <Property Name="department_ml_user_fk" Type="int" Nullable="false" />
+          <Property Name="department_ml_count" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_dept_cat_images">
+          <Key>
+            <PropertyRef Name="dept_cat_pk" />
+          </Key>
+          <Property Name="dept_cat_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dept_cat_department_fk" Type="int" />
+          <Property Name="dept_cat_category_fk" Type="int" />
+          <Property Name="dept_cat_image_data" Type="longblob" />
+          <Property Name="start_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="end_date" Type="datetime" Precision="0" />
+          <Property Name="createdondate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="createdby" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="lastupdateddate" Type="datetime" Precision="0" />
+          <Property Name="lastupdatedby" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="tb_history_item">
+          <Key>
+            <PropertyRef Name="history_item_pk" />
+          </Key>
+          <Property Name="history_item_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="history_item_product_fk" Type="int" Nullable="false" />
+          <Property Name="history_item_user_fk" Type="int" Nullable="false" />
+          <Property Name="history_item_rating" Type="int" Nullable="false" />
+          <Property Name="start_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="end_date" Type="datetime" Precision="0" />
+          <Property Name="createdondate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="createdby" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="lastupdateddate" Type="datetime" Precision="0" />
+          <Property Name="lastupdatedby" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="tb_product">
+          <Key>
+            <PropertyRef Name="product_pk" />
+          </Key>
+          <Property Name="product_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="product_details" Type="mediumtext" />
+          <Property Name="product_price" Type="int" Nullable="false" />
+          <Property Name="product_category_fk" Type="int" Nullable="false" />
+          <Property Name="start_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="end_date" Type="datetime" Precision="0" />
+          <Property Name="createdondate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="createdby" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="lastupdateddate" Type="datetime" Precision="0" />
+          <Property Name="lastupdatedby" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="tb_product_images">
+          <Key>
+            <PropertyRef Name="prod_image_pk" />
+          </Key>
+          <Property Name="prod_image_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prod_id" Type="int" Nullable="false" />
+          <Property Name="prod_image_data" Type="longblob" />
+          <Property Name="prod_main_photo" Type="bit" Nullable="false" />
+          <Property Name="start_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="end_date" Type="datetime" Precision="0" />
+          <Property Name="createdondate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="createdby" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="lastupdateddate" Type="datetime" Precision="0" />
+          <Property Name="lastupdatedby" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="tb_product_sale">
+          <Key>
+            <PropertyRef Name="product_sale_pk" />
+          </Key>
+          <Property Name="product_sale_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_sale_product_fk" Type="int" Nullable="false" />
+          <Property Name="product_sale_user_fk" Type="int" Nullable="false" />
+          <Property Name="product_sale_count" Type="int" Nullable="false" />
+          <Property Name="start_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="end_date" Type="datetime" Precision="0" />
+          <Property Name="createdondate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="createdby" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="lastupdateddate" Type="datetime" Precision="0" />
+          <Property Name="lastupdatedby" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="tb_rating">
+          <Key>
+            <PropertyRef Name="rating_pk" />
+          </Key>
+          <Property Name="rating_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rating_product_fk" Type="int" Nullable="false" />
+          <Property Name="rating_user_fk" Type="int" Nullable="false" />
+          <Property Name="rating_item" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_users">
+          <Key>
+            <PropertyRef Name="user_pk" />
+          </Key>
+          <Property Name="user_pk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_firstName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="user_lastName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="user_username" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="user_password" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="admin" Type="bit" Nullable="false" />
+          <Property Name="start_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="end_date" Type="datetime" Precision="0" />
+          <Property Name="createdondate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="createdby" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="lastupdateddate" Type="datetime" Precision="0" />
+          <Property Name="lastupdatedby" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <Association Name="FKbasket">
+          <End Role="tb_basket" Type="Self.tb_basket" Multiplicity="1" />
+          <End Role="tb_basket_item" Type="Self.tb_basket_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_basket">
+              <PropertyRef Name="basket_pk" />
+            </Principal>
+            <Dependent Role="tb_basket_item">
+              <PropertyRef Name="basket_item_basket_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKcategory_ml_cat_key">
+          <End Role="tb_category" Type="Self.tb_category" Multiplicity="1" />
+          <End Role="tb_category_ml" Type="Self.tb_category_ml" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_category">
+              <PropertyRef Name="category_pk" />
+            </Principal>
+            <Dependent Role="tb_category_ml">
+              <PropertyRef Name="category_ml_category_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKcategory_ml_user_key">
+          <End Role="tb_users" Type="Self.tb_users" Multiplicity="1" />
+          <End Role="tb_category_ml" Type="Self.tb_category_ml" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_users">
+              <PropertyRef Name="user_pk" />
+            </Principal>
+            <Dependent Role="tb_category_ml">
+              <PropertyRef Name="category_ml_user_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKdepartment">
+          <End Role="tb_department" Type="Self.tb_department" Multiplicity="1" />
+          <End Role="tb_category" Type="Self.tb_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_department">
+              <PropertyRef Name="department_pk" />
+            </Principal>
+            <Dependent Role="tb_category">
+              <PropertyRef Name="category_department_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKdepartment_ml_dep_key">
+          <End Role="tb_department" Type="Self.tb_department" Multiplicity="1" />
+          <End Role="tb_department_ml" Type="Self.tb_department_ml" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_department">
+              <PropertyRef Name="department_pk" />
+            </Principal>
+            <Dependent Role="tb_department_ml">
+              <PropertyRef Name="department_ml_department_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKdepartment_ml_user_key">
+          <End Role="tb_users" Type="Self.tb_users" Multiplicity="1" />
+          <End Role="tb_department_ml" Type="Self.tb_department_ml" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_users">
+              <PropertyRef Name="user_pk" />
+            </Principal>
+            <Dependent Role="tb_department_ml">
+              <PropertyRef Name="department_ml_user_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKhistory_product">
+          <End Role="tb_product" Type="Self.tb_product" Multiplicity="1" />
+          <End Role="tb_history_item" Type="Self.tb_history_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_product">
+              <PropertyRef Name="product_pk" />
+            </Principal>
+            <Dependent Role="tb_history_item">
+              <PropertyRef Name="history_item_product_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKhistory_user">
+          <End Role="tb_users" Type="Self.tb_users" Multiplicity="1" />
+          <End Role="tb_history_item" Type="Self.tb_history_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_users">
+              <PropertyRef Name="user_pk" />
+            </Principal>
+            <Dependent Role="tb_history_item">
+              <PropertyRef Name="history_item_user_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKimage">
+          <End Role="tb_product" Type="Self.tb_product" Multiplicity="1" />
+          <End Role="tb_product_images" Type="Self.tb_product_images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_product">
+              <PropertyRef Name="product_pk" />
+            </Principal>
+            <Dependent Role="tb_product_images">
+              <PropertyRef Name="prod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKimageCategory">
+          <End Role="tb_category" Type="Self.tb_category" Multiplicity="0..1" />
+          <End Role="tb_dept_cat_images" Type="Self.tb_dept_cat_images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_category">
+              <PropertyRef Name="category_pk" />
+            </Principal>
+            <Dependent Role="tb_dept_cat_images">
+              <PropertyRef Name="dept_cat_category_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKimageDepartment">
+          <End Role="tb_department" Type="Self.tb_department" Multiplicity="0..1" />
+          <End Role="tb_dept_cat_images" Type="Self.tb_dept_cat_images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_department">
+              <PropertyRef Name="department_pk" />
+            </Principal>
+            <Dependent Role="tb_dept_cat_images">
+              <PropertyRef Name="dept_cat_department_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKproduct">
+          <End Role="tb_product" Type="Self.tb_product" Multiplicity="1" />
+          <End Role="tb_basket_item" Type="Self.tb_basket_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_product">
+              <PropertyRef Name="product_pk" />
+            </Principal>
+            <Dependent Role="tb_basket_item">
+              <PropertyRef Name="basket_item_product_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKproduct_sale_product">
+          <End Role="tb_product" Type="Self.tb_product" Multiplicity="1" />
+          <End Role="tb_product_sale" Type="Self.tb_product_sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_product">
+              <PropertyRef Name="product_pk" />
+            </Principal>
+            <Dependent Role="tb_product_sale">
+              <PropertyRef Name="product_sale_product_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKrating_product">
+          <End Role="tb_product" Type="Self.tb_product" Multiplicity="1" />
+          <End Role="tb_rating" Type="Self.tb_rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_product">
+              <PropertyRef Name="product_pk" />
+            </Principal>
+            <Dependent Role="tb_rating">
+              <PropertyRef Name="rating_product_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKrating_user">
+          <End Role="tb_users" Type="Self.tb_users" Multiplicity="1" />
+          <End Role="tb_rating" Type="Self.tb_rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_users">
+              <PropertyRef Name="user_pk" />
+            </Principal>
+            <Dependent Role="tb_rating">
+              <PropertyRef Name="rating_user_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fproduct_sale_user">
+          <End Role="tb_users" Type="Self.tb_users" Multiplicity="1" />
+          <End Role="tb_product_sale" Type="Self.tb_product_sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_users">
+              <PropertyRef Name="user_pk" />
+            </Principal>
+            <Dependent Role="tb_product_sale">
+              <PropertyRef Name="product_sale_user_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mydatabaseModelStoreContainer">
+          <EntitySet Name="tb_basket" EntityType="Self.tb_basket" Schema="mydatabase" store:Type="Tables" />
+          <EntitySet Name="tb_basket_item" EntityType="Self.tb_basket_item" Schema="mydatabase" store:Type="Tables" />
+          <EntitySet Name="tb_category" EntityType="Self.tb_category" Schema="mydatabase" store:Type="Tables" />
+          <EntitySet Name="tb_category_ml" EntityType="Self.tb_category_ml" Schema="mydatabase" store:Type="Tables" />
+          <EntitySet Name="tb_department" EntityType="Self.tb_department" Schema="mydatabase" store:Type="Tables" />
+          <EntitySet Name="tb_department_ml" EntityType="Self.tb_department_ml" Schema="mydatabase" store:Type="Tables" />
+          <EntitySet Name="tb_dept_cat_images" EntityType="Self.tb_dept_cat_images" Schema="mydatabase" store:Type="Tables" />
+          <EntitySet Name="tb_history_item" EntityType="Self.tb_history_item" Schema="mydatabase" store:Type="Tables" />
+          <EntitySet Name="tb_product" EntityType="Self.tb_product" Schema="mydatabase" store:Type="Tables" />
+          <EntitySet Name="tb_product_images" EntityType="Self.tb_product_images" Schema="mydatabase" store:Type="Tables" />
+          <EntitySet Name="tb_product_sale" EntityType="Self.tb_product_sale" Schema="mydatabase" store:Type="Tables" />
+          <EntitySet Name="tb_rating" EntityType="Self.tb_rating" Schema="mydatabase" store:Type="Tables" />
+          <EntitySet Name="tb_users" EntityType="Self.tb_users" Schema="mydatabase" store:Type="Tables" />
+          <AssociationSet Name="FKbasket" Association="Self.FKbasket">
+            <End Role="tb_basket" EntitySet="tb_basket" />
+            <End Role="tb_basket_item" EntitySet="tb_basket_item" />
+          </AssociationSet>
+          <AssociationSet Name="FKcategory_ml_cat_key" Association="Self.FKcategory_ml_cat_key">
+            <End Role="tb_category" EntitySet="tb_category" />
+            <End Role="tb_category_ml" EntitySet="tb_category_ml" />
+          </AssociationSet>
+          <AssociationSet Name="FKcategory_ml_user_key" Association="Self.FKcategory_ml_user_key">
+            <End Role="tb_users" EntitySet="tb_users" />
+            <End Role="tb_category_ml" EntitySet="tb_category_ml" />
+          </AssociationSet>
+          <AssociationSet Name="FKdepartment" Association="Self.FKdepartment">
+            <End Role="tb_department" EntitySet="tb_department" />
+            <End Role="tb_category" EntitySet="tb_category" />
+          </AssociationSet>
+          <AssociationSet Name="FKdepartment_ml_dep_key" Association="Self.FKdepartment_ml_dep_key">
+            <End Role="tb_department" EntitySet="tb_department" />
+            <End Role="tb_department_ml" EntitySet="tb_department_ml" />
+          </AssociationSet>
+          <AssociationSet Name="FKdepartment_ml_user_key" Association="Self.FKdepartment_ml_user_key">
+            <End Role="tb_users" EntitySet="tb_users" />
+            <End Role="tb_department_ml" EntitySet="tb_department_ml" />
+          </AssociationSet>
+          <AssociationSet Name="FKhistory_product" Association="Self.FKhistory_product">
+            <End Role="tb_product" EntitySet="tb_product" />
+            <End Role="tb_history_item" EntitySet="tb_history_item" />
+          </AssociationSet>
+          <AssociationSet Name="FKhistory_user" Association="Self.FKhistory_user">
+            <End Role="tb_users" EntitySet="tb_users" />
+            <End Role="tb_history_item" EntitySet="tb_history_item" />
+          </AssociationSet>
+          <AssociationSet Name="FKimage" Association="Self.FKimage">
+            <End Role="tb_product" EntitySet="tb_product" />
+            <End Role="tb_product_images" EntitySet="tb_product_images" />
+          </AssociationSet>
+          <AssociationSet Name="FKimageCategory" Association="Self.FKimageCategory">
+            <End Role="tb_category" EntitySet="tb_category" />
+            <End Role="tb_dept_cat_images" EntitySet="tb_dept_cat_images" />
+          </AssociationSet>
+          <AssociationSet Name="FKimageDepartment" Association="Self.FKimageDepartment">
+            <End Role="tb_department" EntitySet="tb_department" />
+            <End Role="tb_dept_cat_images" EntitySet="tb_dept_cat_images" />
+          </AssociationSet>
+          <AssociationSet Name="FKproduct" Association="Self.FKproduct">
+            <End Role="tb_product" EntitySet="tb_product" />
+            <End Role="tb_basket_item" EntitySet="tb_basket_item" />
+          </AssociationSet>
+          <AssociationSet Name="FKproduct_sale_product" Association="Self.FKproduct_sale_product">
+            <End Role="tb_product" EntitySet="tb_product" />
+            <End Role="tb_product_sale" EntitySet="tb_product_sale" />
+          </AssociationSet>
+          <AssociationSet Name="FKrating_product" Association="Self.FKrating_product">
+            <End Role="tb_product" EntitySet="tb_product" />
+            <End Role="tb_rating" EntitySet="tb_rating" />
+          </AssociationSet>
+          <AssociationSet Name="FKrating_user" Association="Self.FKrating_user">
+            <End Role="tb_users" EntitySet="tb_users" />
+            <End Role="tb_rating" EntitySet="tb_rating" />
+          </AssociationSet>
+          <AssociationSet Name="Fproduct_sale_user" Association="Self.Fproduct_sale_user">
+            <End Role="tb_users" EntitySet="tb_users" />
+            <End Role="tb_product_sale" EntitySet="tb_product_sale" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mydatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="mydatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_basket" EntityType="mydatabaseModel.tb_basket" />
+          <EntitySet Name="tb_basket_item" EntityType="mydatabaseModel.tb_basket_item" />
+          <EntitySet Name="tb_category" EntityType="mydatabaseModel.tb_category" />
+          <EntitySet Name="tb_category_ml" EntityType="mydatabaseModel.tb_category_ml" />
+          <EntitySet Name="tb_department" EntityType="mydatabaseModel.tb_department" />
+          <EntitySet Name="tb_department_ml" EntityType="mydatabaseModel.tb_department_ml" />
+          <EntitySet Name="tb_dept_cat_images" EntityType="mydatabaseModel.tb_dept_cat_images" />
+          <EntitySet Name="tb_history_item" EntityType="mydatabaseModel.tb_history_item" />
+          <EntitySet Name="tb_product" EntityType="mydatabaseModel.tb_product" />
+          <EntitySet Name="tb_product_images" EntityType="mydatabaseModel.tb_product_images" />
+          <EntitySet Name="tb_product_sale" EntityType="mydatabaseModel.tb_product_sale" />
+          <EntitySet Name="tb_rating" EntityType="mydatabaseModel.tb_rating" />
+          <EntitySet Name="tb_users" EntityType="mydatabaseModel.tb_users" />
+          <AssociationSet Name="FKbasket" Association="mydatabaseModel.FKbasket">
+            <End Role="tb_basket" EntitySet="tb_basket" />
+            <End Role="tb_basket_item" EntitySet="tb_basket_item" />
+          </AssociationSet>
+          <AssociationSet Name="FKproduct" Association="mydatabaseModel.FKproduct">
+            <End Role="tb_product" EntitySet="tb_product" />
+            <End Role="tb_basket_item" EntitySet="tb_basket_item" />
+          </AssociationSet>
+          <AssociationSet Name="FKcategory_ml_cat_key" Association="mydatabaseModel.FKcategory_ml_cat_key">
+            <End Role="tb_category" EntitySet="tb_category" />
+            <End Role="tb_category_ml" EntitySet="tb_category_ml" />
+          </AssociationSet>
+          <AssociationSet Name="FKdepartment" Association="mydatabaseModel.FKdepartment">
+            <End Role="tb_department" EntitySet="tb_department" />
+            <End Role="tb_category" EntitySet="tb_category" />
+          </AssociationSet>
+          <AssociationSet Name="FKimageCategory" Association="mydatabaseModel.FKimageCategory">
+            <End Role="tb_category" EntitySet="tb_category" />
+            <End Role="tb_dept_cat_images" EntitySet="tb_dept_cat_images" />
+          </AssociationSet>
+          <AssociationSet Name="FKcategory_ml_user_key" Association="mydatabaseModel.FKcategory_ml_user_key">
+            <End Role="tb_users" EntitySet="tb_users" />
+            <End Role="tb_category_ml" EntitySet="tb_category_ml" />
+          </AssociationSet>
+          <AssociationSet Name="FKdepartment_ml_dep_key" Association="mydatabaseModel.FKdepartment_ml_dep_key">
+            <End Role="tb_department" EntitySet="tb_department" />
+            <End Role="tb_department_ml" EntitySet="tb_department_ml" />
+          </AssociationSet>
+          <AssociationSet Name="FKimageDepartment" Association="mydatabaseModel.FKimageDepartment">
+            <End Role="tb_department" EntitySet="tb_department" />
+            <End Role="tb_dept_cat_images" EntitySet="tb_dept_cat_images" />
+          </AssociationSet>
+          <AssociationSet Name="FKdepartment_ml_user_key" Association="mydatabaseModel.FKdepartment_ml_user_key">
+            <End Role="tb_users" EntitySet="tb_users" />
+            <End Role="tb_department_ml" EntitySet="tb_department_ml" />
+          </AssociationSet>
+          <AssociationSet Name="FKhistory_product" Association="mydatabaseModel.FKhistory_product">
+            <End Role="tb_product" EntitySet="tb_product" />
+            <End Role="tb_history_item" EntitySet="tb_history_item" />
+          </AssociationSet>
+          <AssociationSet Name="FKhistory_user" Association="mydatabaseModel.FKhistory_user">
+            <End Role="tb_users" EntitySet="tb_users" />
+            <End Role="tb_history_item" EntitySet="tb_history_item" />
+          </AssociationSet>
+          <AssociationSet Name="FKimage" Association="mydatabaseModel.FKimage">
+            <End Role="tb_product" EntitySet="tb_product" />
+            <End Role="tb_product_images" EntitySet="tb_product_images" />
+          </AssociationSet>
+          <AssociationSet Name="FKproduct_sale_product" Association="mydatabaseModel.FKproduct_sale_product">
+            <End Role="tb_product" EntitySet="tb_product" />
+            <End Role="tb_product_sale" EntitySet="tb_product_sale" />
+          </AssociationSet>
+          <AssociationSet Name="FKrating_product" Association="mydatabaseModel.FKrating_product">
+            <End Role="tb_product" EntitySet="tb_product" />
+            <End Role="tb_rating" EntitySet="tb_rating" />
+          </AssociationSet>
+          <AssociationSet Name="Fproduct_sale_user" Association="mydatabaseModel.Fproduct_sale_user">
+            <End Role="tb_users" EntitySet="tb_users" />
+            <End Role="tb_product_sale" EntitySet="tb_product_sale" />
+          </AssociationSet>
+          <AssociationSet Name="FKrating_user" Association="mydatabaseModel.FKrating_user">
+            <End Role="tb_users" EntitySet="tb_users" />
+            <End Role="tb_rating" EntitySet="tb_rating" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tb_basket">
+          <Key>
+            <PropertyRef Name="basket_pk" />
+          </Key>
+          <Property Name="basket_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="basket_user_fk" Type="Int32" Nullable="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" />
+          <Property Name="end_date" Type="DateTime" />
+          <Property Name="createdondate" Type="DateTime" Nullable="false" />
+          <Property Name="createdby" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="lastupdateddate" Type="DateTime" />
+          <Property Name="lastupdatedby" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_basket_item" Relationship="mydatabaseModel.FKbasket" FromRole="tb_basket" ToRole="tb_basket_item" />
+        </EntityType>
+        <EntityType Name="tb_basket_item">
+          <Key>
+            <PropertyRef Name="basket_item_pk" />
+          </Key>
+          <Property Name="basket_item_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="basket_item_basket_fk" Type="Int32" Nullable="false" />
+          <Property Name="basket_item_product_fk" Type="Int32" Nullable="false" />
+          <Property Name="basket_item_product_name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="basket_item_product_price" Type="Int32" Nullable="false" />
+          <Property Name="basket_item_count" Type="Int32" Nullable="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" />
+          <Property Name="end_date" Type="DateTime" />
+          <Property Name="createdondate" Type="DateTime" Nullable="false" />
+          <Property Name="createdby" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="lastupdateddate" Type="DateTime" />
+          <Property Name="lastupdatedby" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_basket" Relationship="mydatabaseModel.FKbasket" FromRole="tb_basket_item" ToRole="tb_basket" />
+          <NavigationProperty Name="tb_product" Relationship="mydatabaseModel.FKproduct" FromRole="tb_basket_item" ToRole="tb_product" />
+        </EntityType>
+        <EntityType Name="tb_category">
+          <Key>
+            <PropertyRef Name="category_pk" />
+          </Key>
+          <Property Name="category_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category_name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="category_department_fk" Type="Int32" Nullable="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" />
+          <Property Name="end_date" Type="DateTime" />
+          <Property Name="createdondate" Type="DateTime" Nullable="false" />
+          <Property Name="createdby" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="lastupdateddate" Type="DateTime" />
+          <Property Name="lastupdatedby" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_category_ml" Relationship="mydatabaseModel.FKcategory_ml_cat_key" FromRole="tb_category" ToRole="tb_category_ml" />
+          <NavigationProperty Name="tb_department" Relationship="mydatabaseModel.FKdepartment" FromRole="tb_category" ToRole="tb_department" />
+          <NavigationProperty Name="tb_dept_cat_images" Relationship="mydatabaseModel.FKimageCategory" FromRole="tb_category" ToRole="tb_dept_cat_images" />
+        </EntityType>
+        <EntityType Name="tb_category_ml">
+          <Key>
+            <PropertyRef Name="category_ml_pk" />
+          </Key>
+          <Property Name="category_ml_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category_ml_category_fk" Type="Int32" Nullable="false" />
+          <Property Name="category_ml_user_fk" Type="Int32" Nullable="false" />
+          <Property Name="category_ml_count" Type="Single" Nullable="false" />
+          <NavigationProperty Name="tb_category" Relationship="mydatabaseModel.FKcategory_ml_cat_key" FromRole="tb_category_ml" ToRole="tb_category" />
+          <NavigationProperty Name="tb_users" Relationship="mydatabaseModel.FKcategory_ml_user_key" FromRole="tb_category_ml" ToRole="tb_users" />
+        </EntityType>
+        <EntityType Name="tb_department">
+          <Key>
+            <PropertyRef Name="department_pk" />
+          </Key>
+          <Property Name="department_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="department_name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" />
+          <Property Name="end_date" Type="DateTime" />
+          <Property Name="createdondate" Type="DateTime" Nullable="false" />
+          <Property Name="createdby" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="lastupdateddate" Type="DateTime" />
+          <Property Name="lastupdatedby" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_category" Relationship="mydatabaseModel.FKdepartment" FromRole="tb_department" ToRole="tb_category" />
+          <NavigationProperty Name="tb_department_ml" Relationship="mydatabaseModel.FKdepartment_ml_dep_key" FromRole="tb_department" ToRole="tb_department_ml" />
+          <NavigationProperty Name="tb_dept_cat_images" Relationship="mydatabaseModel.FKimageDepartment" FromRole="tb_department" ToRole="tb_dept_cat_images" />
+        </EntityType>
+        <EntityType Name="tb_department_ml">
+          <Key>
+            <PropertyRef Name="department_ml_pk" />
+          </Key>
+          <Property Name="department_ml_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="department_ml_department_fk" Type="Int32" Nullable="false" />
+          <Property Name="department_ml_user_fk" Type="Int32" Nullable="false" />
+          <Property Name="department_ml_count" Type="Single" Nullable="false" />
+          <NavigationProperty Name="tb_department" Relationship="mydatabaseModel.FKdepartment_ml_dep_key" FromRole="tb_department_ml" ToRole="tb_department" />
+          <NavigationProperty Name="tb_users" Relationship="mydatabaseModel.FKdepartment_ml_user_key" FromRole="tb_department_ml" ToRole="tb_users" />
+        </EntityType>
+        <EntityType Name="tb_dept_cat_images">
+          <Key>
+            <PropertyRef Name="dept_cat_pk" />
+          </Key>
+          <Property Name="dept_cat_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dept_cat_department_fk" Type="Int32" />
+          <Property Name="dept_cat_category_fk" Type="Int32" />
+          <Property Name="dept_cat_image_data" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" />
+          <Property Name="end_date" Type="DateTime" />
+          <Property Name="createdondate" Type="DateTime" Nullable="false" />
+          <Property Name="createdby" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="lastupdateddate" Type="DateTime" />
+          <Property Name="lastupdatedby" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_category" Relationship="mydatabaseModel.FKimageCategory" FromRole="tb_dept_cat_images" ToRole="tb_category" />
+          <NavigationProperty Name="tb_department" Relationship="mydatabaseModel.FKimageDepartment" FromRole="tb_dept_cat_images" ToRole="tb_department" />
+        </EntityType>
+        <EntityType Name="tb_history_item">
+          <Key>
+            <PropertyRef Name="history_item_pk" />
+          </Key>
+          <Property Name="history_item_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="history_item_product_fk" Type="Int32" Nullable="false" />
+          <Property Name="history_item_user_fk" Type="Int32" Nullable="false" />
+          <Property Name="history_item_rating" Type="Int32" Nullable="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" />
+          <Property Name="end_date" Type="DateTime" />
+          <Property Name="createdondate" Type="DateTime" Nullable="false" />
+          <Property Name="createdby" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="lastupdateddate" Type="DateTime" />
+          <Property Name="lastupdatedby" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_product" Relationship="mydatabaseModel.FKhistory_product" FromRole="tb_history_item" ToRole="tb_product" />
+          <NavigationProperty Name="tb_users" Relationship="mydatabaseModel.FKhistory_user" FromRole="tb_history_item" ToRole="tb_users" />
+        </EntityType>
+        <EntityType Name="tb_product">
+          <Key>
+            <PropertyRef Name="product_pk" />
+          </Key>
+          <Property Name="product_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="product_details" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="product_price" Type="Int32" Nullable="false" />
+          <Property Name="product_category_fk" Type="Int32" Nullable="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" />
+          <Property Name="end_date" Type="DateTime" />
+          <Property Name="createdondate" Type="DateTime" Nullable="false" />
+          <Property Name="createdby" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="lastupdateddate" Type="DateTime" />
+          <Property Name="lastupdatedby" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_basket_item" Relationship="mydatabaseModel.FKproduct" FromRole="tb_product" ToRole="tb_basket_item" />
+          <NavigationProperty Name="tb_history_item" Relationship="mydatabaseModel.FKhistory_product" FromRole="tb_product" ToRole="tb_history_item" />
+          <NavigationProperty Name="tb_product_images" Relationship="mydatabaseModel.FKimage" FromRole="tb_product" ToRole="tb_product_images" />
+          <NavigationProperty Name="tb_product_sale" Relationship="mydatabaseModel.FKproduct_sale_product" FromRole="tb_product" ToRole="tb_product_sale" />
+          <NavigationProperty Name="tb_rating" Relationship="mydatabaseModel.FKrating_product" FromRole="tb_product" ToRole="tb_rating" />
+        </EntityType>
+        <EntityType Name="tb_product_images">
+          <Key>
+            <PropertyRef Name="prod_image_pk" />
+          </Key>
+          <Property Name="prod_image_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prod_id" Type="Int32" Nullable="false" />
+          <Property Name="prod_image_data" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="prod_main_photo" Type="Boolean" Nullable="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" />
+          <Property Name="end_date" Type="DateTime" />
+          <Property Name="createdondate" Type="DateTime" Nullable="false" />
+          <Property Name="createdby" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="lastupdateddate" Type="DateTime" />
+          <Property Name="lastupdatedby" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_product" Relationship="mydatabaseModel.FKimage" FromRole="tb_product_images" ToRole="tb_product" />
+        </EntityType>
+        <EntityType Name="tb_product_sale">
+          <Key>
+            <PropertyRef Name="product_sale_pk" />
+          </Key>
+          <Property Name="product_sale_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_sale_product_fk" Type="Int32" Nullable="false" />
+          <Property Name="product_sale_user_fk" Type="Int32" Nullable="false" />
+          <Property Name="product_sale_count" Type="Int32" Nullable="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" />
+          <Property Name="end_date" Type="DateTime" />
+          <Property Name="createdondate" Type="DateTime" Nullable="false" />
+          <Property Name="createdby" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="lastupdateddate" Type="DateTime" />
+          <Property Name="lastupdatedby" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_product" Relationship="mydatabaseModel.FKproduct_sale_product" FromRole="tb_product_sale" ToRole="tb_product" />
+          <NavigationProperty Name="tb_users" Relationship="mydatabaseModel.Fproduct_sale_user" FromRole="tb_product_sale" ToRole="tb_users" />
+        </EntityType>
+        <EntityType Name="tb_rating">
+          <Key>
+            <PropertyRef Name="rating_pk" />
+          </Key>
+          <Property Name="rating_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rating_product_fk" Type="Int32" Nullable="false" />
+          <Property Name="rating_user_fk" Type="Int32" Nullable="false" />
+          <Property Name="rating_item" Type="Single" Nullable="false" />
+          <NavigationProperty Name="tb_product" Relationship="mydatabaseModel.FKrating_product" FromRole="tb_rating" ToRole="tb_product" />
+          <NavigationProperty Name="tb_users" Relationship="mydatabaseModel.FKrating_user" FromRole="tb_rating" ToRole="tb_users" />
+        </EntityType>
+        <EntityType Name="tb_users">
+          <Key>
+            <PropertyRef Name="user_pk" />
+          </Key>
+          <Property Name="user_pk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_firstName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="user_lastName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="user_username" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="user_password" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="admin" Type="Boolean" Nullable="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" />
+          <Property Name="end_date" Type="DateTime" />
+          <Property Name="createdondate" Type="DateTime" Nullable="false" />
+          <Property Name="createdby" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="lastupdateddate" Type="DateTime" />
+          <Property Name="lastupdatedby" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_category_ml" Relationship="mydatabaseModel.FKcategory_ml_user_key" FromRole="tb_users" ToRole="tb_category_ml" />
+          <NavigationProperty Name="tb_department_ml" Relationship="mydatabaseModel.FKdepartment_ml_user_key" FromRole="tb_users" ToRole="tb_department_ml" />
+          <NavigationProperty Name="tb_history_item" Relationship="mydatabaseModel.FKhistory_user" FromRole="tb_users" ToRole="tb_history_item" />
+          <NavigationProperty Name="tb_product_sale" Relationship="mydatabaseModel.Fproduct_sale_user" FromRole="tb_users" ToRole="tb_product_sale" />
+          <NavigationProperty Name="tb_rating" Relationship="mydatabaseModel.FKrating_user" FromRole="tb_users" ToRole="tb_rating" />
+        </EntityType>
+        <Association Name="FKbasket">
+          <End Type="mydatabaseModel.tb_basket" Role="tb_basket" Multiplicity="1" />
+          <End Type="mydatabaseModel.tb_basket_item" Role="tb_basket_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_basket">
+              <PropertyRef Name="basket_pk" />
+            </Principal>
+            <Dependent Role="tb_basket_item">
+              <PropertyRef Name="basket_item_basket_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKproduct">
+          <End Type="mydatabaseModel.tb_product" Role="tb_product" Multiplicity="1" />
+          <End Type="mydatabaseModel.tb_basket_item" Role="tb_basket_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_product">
+              <PropertyRef Name="product_pk" />
+            </Principal>
+            <Dependent Role="tb_basket_item">
+              <PropertyRef Name="basket_item_product_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKcategory_ml_cat_key">
+          <End Type="mydatabaseModel.tb_category" Role="tb_category" Multiplicity="1" />
+          <End Type="mydatabaseModel.tb_category_ml" Role="tb_category_ml" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_category">
+              <PropertyRef Name="category_pk" />
+            </Principal>
+            <Dependent Role="tb_category_ml">
+              <PropertyRef Name="category_ml_category_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKdepartment">
+          <End Type="mydatabaseModel.tb_department" Role="tb_department" Multiplicity="1" />
+          <End Type="mydatabaseModel.tb_category" Role="tb_category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_department">
+              <PropertyRef Name="department_pk" />
+            </Principal>
+            <Dependent Role="tb_category">
+              <PropertyRef Name="category_department_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKimageCategory">
+          <End Type="mydatabaseModel.tb_category" Role="tb_category" Multiplicity="0..1" />
+          <End Type="mydatabaseModel.tb_dept_cat_images" Role="tb_dept_cat_images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_category">
+              <PropertyRef Name="category_pk" />
+            </Principal>
+            <Dependent Role="tb_dept_cat_images">
+              <PropertyRef Name="dept_cat_category_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKcategory_ml_user_key">
+          <End Type="mydatabaseModel.tb_users" Role="tb_users" Multiplicity="1" />
+          <End Type="mydatabaseModel.tb_category_ml" Role="tb_category_ml" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_users">
+              <PropertyRef Name="user_pk" />
+            </Principal>
+            <Dependent Role="tb_category_ml">
+              <PropertyRef Name="category_ml_user_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKdepartment_ml_dep_key">
+          <End Type="mydatabaseModel.tb_department" Role="tb_department" Multiplicity="1" />
+          <End Type="mydatabaseModel.tb_department_ml" Role="tb_department_ml" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_department">
+              <PropertyRef Name="department_pk" />
+            </Principal>
+            <Dependent Role="tb_department_ml">
+              <PropertyRef Name="department_ml_department_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKimageDepartment">
+          <End Type="mydatabaseModel.tb_department" Role="tb_department" Multiplicity="0..1" />
+          <End Type="mydatabaseModel.tb_dept_cat_images" Role="tb_dept_cat_images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_department">
+              <PropertyRef Name="department_pk" />
+            </Principal>
+            <Dependent Role="tb_dept_cat_images">
+              <PropertyRef Name="dept_cat_department_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKdepartment_ml_user_key">
+          <End Type="mydatabaseModel.tb_users" Role="tb_users" Multiplicity="1" />
+          <End Type="mydatabaseModel.tb_department_ml" Role="tb_department_ml" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_users">
+              <PropertyRef Name="user_pk" />
+            </Principal>
+            <Dependent Role="tb_department_ml">
+              <PropertyRef Name="department_ml_user_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKhistory_product">
+          <End Type="mydatabaseModel.tb_product" Role="tb_product" Multiplicity="1" />
+          <End Type="mydatabaseModel.tb_history_item" Role="tb_history_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_product">
+              <PropertyRef Name="product_pk" />
+            </Principal>
+            <Dependent Role="tb_history_item">
+              <PropertyRef Name="history_item_product_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKhistory_user">
+          <End Type="mydatabaseModel.tb_users" Role="tb_users" Multiplicity="1" />
+          <End Type="mydatabaseModel.tb_history_item" Role="tb_history_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_users">
+              <PropertyRef Name="user_pk" />
+            </Principal>
+            <Dependent Role="tb_history_item">
+              <PropertyRef Name="history_item_user_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKimage">
+          <End Type="mydatabaseModel.tb_product" Role="tb_product" Multiplicity="1" />
+          <End Type="mydatabaseModel.tb_product_images" Role="tb_product_images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_product">
+              <PropertyRef Name="product_pk" />
+            </Principal>
+            <Dependent Role="tb_product_images">
+              <PropertyRef Name="prod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKproduct_sale_product">
+          <End Type="mydatabaseModel.tb_product" Role="tb_product" Multiplicity="1" />
+          <End Type="mydatabaseModel.tb_product_sale" Role="tb_product_sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_product">
+              <PropertyRef Name="product_pk" />
+            </Principal>
+            <Dependent Role="tb_product_sale">
+              <PropertyRef Name="product_sale_product_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKrating_product">
+          <End Type="mydatabaseModel.tb_product" Role="tb_product" Multiplicity="1" />
+          <End Type="mydatabaseModel.tb_rating" Role="tb_rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_product">
+              <PropertyRef Name="product_pk" />
+            </Principal>
+            <Dependent Role="tb_rating">
+              <PropertyRef Name="rating_product_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fproduct_sale_user">
+          <End Type="mydatabaseModel.tb_users" Role="tb_users" Multiplicity="1" />
+          <End Type="mydatabaseModel.tb_product_sale" Role="tb_product_sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_users">
+              <PropertyRef Name="user_pk" />
+            </Principal>
+            <Dependent Role="tb_product_sale">
+              <PropertyRef Name="product_sale_user_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKrating_user">
+          <End Type="mydatabaseModel.tb_users" Role="tb_users" Multiplicity="1" />
+          <End Type="mydatabaseModel.tb_rating" Role="tb_rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_users">
+              <PropertyRef Name="user_pk" />
+            </Principal>
+            <Dependent Role="tb_rating">
+              <PropertyRef Name="rating_user_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mydatabaseModelStoreContainer" CdmEntityContainer="mydatabaseEntities">
+          <EntitySetMapping Name="tb_basket">
+            <EntityTypeMapping TypeName="mydatabaseModel.tb_basket">
+              <MappingFragment StoreEntitySet="tb_basket">
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+                <ScalarProperty Name="lastupdateddate" ColumnName="lastupdateddate" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdondate" ColumnName="createdondate" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="basket_user_fk" ColumnName="basket_user_fk" />
+                <ScalarProperty Name="basket_pk" ColumnName="basket_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_basket_item">
+            <EntityTypeMapping TypeName="mydatabaseModel.tb_basket_item">
+              <MappingFragment StoreEntitySet="tb_basket_item">
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+                <ScalarProperty Name="lastupdateddate" ColumnName="lastupdateddate" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdondate" ColumnName="createdondate" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="basket_item_count" ColumnName="basket_item_count" />
+                <ScalarProperty Name="basket_item_product_price" ColumnName="basket_item_product_price" />
+                <ScalarProperty Name="basket_item_product_name" ColumnName="basket_item_product_name" />
+                <ScalarProperty Name="basket_item_product_fk" ColumnName="basket_item_product_fk" />
+                <ScalarProperty Name="basket_item_basket_fk" ColumnName="basket_item_basket_fk" />
+                <ScalarProperty Name="basket_item_pk" ColumnName="basket_item_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_category">
+            <EntityTypeMapping TypeName="mydatabaseModel.tb_category">
+              <MappingFragment StoreEntitySet="tb_category">
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+                <ScalarProperty Name="lastupdateddate" ColumnName="lastupdateddate" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdondate" ColumnName="createdondate" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="category_department_fk" ColumnName="category_department_fk" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="category_pk" ColumnName="category_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_category_ml">
+            <EntityTypeMapping TypeName="mydatabaseModel.tb_category_ml">
+              <MappingFragment StoreEntitySet="tb_category_ml">
+                <ScalarProperty Name="category_ml_count" ColumnName="category_ml_count" />
+                <ScalarProperty Name="category_ml_user_fk" ColumnName="category_ml_user_fk" />
+                <ScalarProperty Name="category_ml_category_fk" ColumnName="category_ml_category_fk" />
+                <ScalarProperty Name="category_ml_pk" ColumnName="category_ml_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_department">
+            <EntityTypeMapping TypeName="mydatabaseModel.tb_department">
+              <MappingFragment StoreEntitySet="tb_department">
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+                <ScalarProperty Name="lastupdateddate" ColumnName="lastupdateddate" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdondate" ColumnName="createdondate" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="department_name" ColumnName="department_name" />
+                <ScalarProperty Name="department_pk" ColumnName="department_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_department_ml">
+            <EntityTypeMapping TypeName="mydatabaseModel.tb_department_ml">
+              <MappingFragment StoreEntitySet="tb_department_ml">
+                <ScalarProperty Name="department_ml_count" ColumnName="department_ml_count" />
+                <ScalarProperty Name="department_ml_user_fk" ColumnName="department_ml_user_fk" />
+                <ScalarProperty Name="department_ml_department_fk" ColumnName="department_ml_department_fk" />
+                <ScalarProperty Name="department_ml_pk" ColumnName="department_ml_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_dept_cat_images">
+            <EntityTypeMapping TypeName="mydatabaseModel.tb_dept_cat_images">
+              <MappingFragment StoreEntitySet="tb_dept_cat_images">
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+                <ScalarProperty Name="lastupdateddate" ColumnName="lastupdateddate" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdondate" ColumnName="createdondate" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="dept_cat_image_data" ColumnName="dept_cat_image_data" />
+                <ScalarProperty Name="dept_cat_category_fk" ColumnName="dept_cat_category_fk" />
+                <ScalarProperty Name="dept_cat_department_fk" ColumnName="dept_cat_department_fk" />
+                <ScalarProperty Name="dept_cat_pk" ColumnName="dept_cat_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_history_item">
+            <EntityTypeMapping TypeName="mydatabaseModel.tb_history_item">
+              <MappingFragment StoreEntitySet="tb_history_item">
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+                <ScalarProperty Name="lastupdateddate" ColumnName="lastupdateddate" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdondate" ColumnName="createdondate" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="history_item_rating" ColumnName="history_item_rating" />
+                <ScalarProperty Name="history_item_user_fk" ColumnName="history_item_user_fk" />
+                <ScalarProperty Name="history_item_product_fk" ColumnName="history_item_product_fk" />
+                <ScalarProperty Name="history_item_pk" ColumnName="history_item_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_product">
+            <EntityTypeMapping TypeName="mydatabaseModel.tb_product">
+              <MappingFragment StoreEntitySet="tb_product">
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+                <ScalarProperty Name="lastupdateddate" ColumnName="lastupdateddate" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdondate" ColumnName="createdondate" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="product_category_fk" ColumnName="product_category_fk" />
+                <ScalarProperty Name="product_price" ColumnName="product_price" />
+                <ScalarProperty Name="product_details" ColumnName="product_details" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_pk" ColumnName="product_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_product_images">
+            <EntityTypeMapping TypeName="mydatabaseModel.tb_product_images">
+              <MappingFragment StoreEntitySet="tb_product_images">
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+                <ScalarProperty Name="lastupdateddate" ColumnName="lastupdateddate" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdondate" ColumnName="createdondate" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="prod_main_photo" ColumnName="prod_main_photo" />
+                <ScalarProperty Name="prod_image_data" ColumnName="prod_image_data" />
+                <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+                <ScalarProperty Name="prod_image_pk" ColumnName="prod_image_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_product_sale">
+            <EntityTypeMapping TypeName="mydatabaseModel.tb_product_sale">
+              <MappingFragment StoreEntitySet="tb_product_sale">
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+                <ScalarProperty Name="lastupdateddate" ColumnName="lastupdateddate" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdondate" ColumnName="createdondate" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="product_sale_count" ColumnName="product_sale_count" />
+                <ScalarProperty Name="product_sale_user_fk" ColumnName="product_sale_user_fk" />
+                <ScalarProperty Name="product_sale_product_fk" ColumnName="product_sale_product_fk" />
+                <ScalarProperty Name="product_sale_pk" ColumnName="product_sale_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_rating">
+            <EntityTypeMapping TypeName="mydatabaseModel.tb_rating">
+              <MappingFragment StoreEntitySet="tb_rating">
+                <ScalarProperty Name="rating_item" ColumnName="rating_item" />
+                <ScalarProperty Name="rating_user_fk" ColumnName="rating_user_fk" />
+                <ScalarProperty Name="rating_product_fk" ColumnName="rating_product_fk" />
+                <ScalarProperty Name="rating_pk" ColumnName="rating_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_users">
+            <EntityTypeMapping TypeName="mydatabaseModel.tb_users">
+              <MappingFragment StoreEntitySet="tb_users">
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+                <ScalarProperty Name="lastupdateddate" ColumnName="lastupdateddate" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="createdondate" ColumnName="createdondate" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="admin" ColumnName="admin" />
+                <ScalarProperty Name="user_password" ColumnName="user_password" />
+                <ScalarProperty Name="user_username" ColumnName="user_username" />
+                <ScalarProperty Name="user_lastName" ColumnName="user_lastName" />
+                <ScalarProperty Name="user_firstName" ColumnName="user_firstName" />
+                <ScalarProperty Name="user_pk" ColumnName="user_pk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
